@@ -1,6 +1,6 @@
 const gameHeight = 5;
 const columntemplate = $('#template').clone();
-const gameTemplate =  $('#game').clone();
+const gameTemplate = $('#game').clone();
 
 function buildGameField(height) {
 	let i = 0;
@@ -62,15 +62,13 @@ function flipCard(event) {
 	}
 }
 
-async function restartGame(){
+async function restartGame() {
 	$('body').empty();
 	$('body').append($(gameTemplate));
 	$('.row').on('click', '.card', flipCard);
-	$('#restart').on('click', restartGame)
-	init()
+	$('#restart').on('click', restartGame);
+	init();
 }
-
-
 
 async function init() {
 	buildGameField(gameHeight);
@@ -81,4 +79,4 @@ async function init() {
 init();
 
 $('.row').on('click', '.card', flipCard);
-$('#restart').on('click', restartGame)
+$('#restart').on('click', restartGame);
