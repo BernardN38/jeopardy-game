@@ -2,8 +2,18 @@ body {
     background-color: blue;
 }
 
-
-
+h1 {
+    text-align: center;
+    color: yellow;
+    
+}
+button {
+    transform: scale(0.7);
+}
+#header {
+      display: flex;
+      justify-content: center;
+}
 #main-container{
     height: 90vh;
     border: 3px solid black;

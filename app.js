@@ -1,9 +1,11 @@
 const gameHeight = 5;
+const columntemplate = $('#template').clone();
+const gameTemplate =  $('#game').clone();
 
-function buildGameField() {
+function buildGameField(height) {
 	let i = 0;
-	while (i < gameHeight) {
-		$('#main-container > .row').append($('#template').clone());
+	while (i < height) {
+		$('#main-container > .row').append($(columntemplate).clone());
 		i++;
 	}
 }
@@ -56,12 +58,22 @@ function flipCard(event) {
 			$(this).addClass('flip-card');
 			$(this).find('.answer').css('display', 'none');
 			$(this).find('.back').css('color', 'blue');
-		}, 4000);
+		}, 5000);
 	}
 }
 
+async function restartGame(){
+	$('body').empty();
+	$('body').append($(gameTemplate));
+	$('.row').on('click', '.card', flipCard);
+	$('#restart').on('click', restartGame)
+	init()
+}
+
+
+
 async function init() {
-	buildGameField();
+	buildGameField(gameHeight);
 	await setIds();
 	getClues();
 }
@@ -69,3 +81,4 @@ async function init() {
 init();
 
 $('.row').on('click', '.card', flipCard);
+$('#restart').on('click', restartGame)
