@@ -12,7 +12,7 @@ function buildGameField(height) {
 
 async function getCategories(categoryAmount = 6, offset = Math.floor(Math.random() * 100)) {
 	const params = { count: categoryAmount, offset: offset };
-	let res = await axios.get('https://jservice.io/api/categories', { params });
+	let res = await axios.get('http://jservice.io/api/categories', { params });
 	return res.data;
 }
 
@@ -31,7 +31,7 @@ async function setIds() {
 async function getClues() {
 	$('.category').map(async function(idx, el) {
 		let params = { category: $(this).data().id };
-		let res = await axios.get('https://jservice.io/api/clues', { params });
+		let res = await axios.get('http://jservice.io/api/clues', { params });
 		setClues(res.data, $(this).data().id);
 	});
 }
